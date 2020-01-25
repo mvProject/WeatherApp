@@ -23,6 +23,8 @@ class DailyFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DailyViewModel::class.java)
         // TODO: Use the ViewModel
+
+        viewModel.getData()
     }
 
 }
