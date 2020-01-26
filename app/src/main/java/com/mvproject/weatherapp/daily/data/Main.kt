@@ -1,7 +1,5 @@
 package com.mvproject.weatherapp.daily.data
 
-import com.mvproject.weatherapp.utils.getTempCelsius
-
 data class Main(
     val grnd_level: Double,
     val humidity: Int,
@@ -10,6 +8,4 @@ data class Main(
     val temp: Double,
     val temp_max: Double,
     val temp_min: Double
-){
-
-}
+)

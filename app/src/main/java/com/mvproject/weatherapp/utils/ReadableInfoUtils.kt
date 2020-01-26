@@ -17,3 +17,7 @@ fun Double.getTempCelsius() : String{
     return this.toString()
 }
 
+fun String.getImageFullUrl() : String{
+    return "http://openweathermap.org/img/w/$this.png"
+}
+

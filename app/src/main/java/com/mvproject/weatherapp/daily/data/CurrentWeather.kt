@@ -1,5 +1,6 @@
 package com.mvproject.weatherapp.daily.data
 
+import com.mvproject.weatherapp.utils.getImageFullUrl
 import com.mvproject.weatherapp.utils.getTempCelsius
 import com.mvproject.weatherapp.utils.getTime
 import com.mvproject.weatherapp.weekly.data.Main
@@ -19,4 +20,6 @@ data class CurrentWeather(
     fun getTempMinCels() = main.temp_min.getTempCelsius()
 
     fun getTempMaxCels() = main.temp_max.getTempCelsius()
+
+    fun getWeatherIcon() = weather.first().icon.getImageFullUrl()
 }

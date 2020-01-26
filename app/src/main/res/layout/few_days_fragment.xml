@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".weekly.ui.FewDaysFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/forecastList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Few Days" />
+        android:layout_height="match_parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
 </FrameLayout>

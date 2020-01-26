@@ -11,7 +11,6 @@ interface OpenWeatherApi {
     fun fewForecastAsync(
         @Query("lat") lat : String,
         @Query("lon") lon : String,
-        //@Query("id") cityName : String = "705812",
         @Query("units") units : String = "metric",
         @Query("appId") appId : String = "4a0e92edc8279c01a9d8c70a81624123") : Deferred<WeeklyWeather>
 
@@ -19,7 +18,6 @@ interface OpenWeatherApi {
     fun dailyForecastAsync(
         @Query("lat") lat : String,
         @Query("lon") lon : String,
-        //@Query("id") cityName : String = "705812",
         @Query("units") units : String = "metric",
         @Query("appId") appId : String = "4a0e92edc8279c01a9d8c70a81624123") : Deferred<CurrentWeather>
 }
