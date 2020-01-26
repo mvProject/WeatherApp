@@ -6,7 +6,7 @@
     <data>
         <variable
             name="dailyWeather"
-            type="com.mvproject.weatherapp.daily.data.CurrentWeather" />
+            type="com.mvproject.weatherapp.daily.data.DailyWeather" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,8 +25,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{dailyWeather.name}"
-            tools:text="cityName"
+            android:text="@{@string/strCity(dailyWeather.name)}"
+            tools:text="@string/strCity"
             android:textColor="@color/colorText"/>
 
         <ImageView
@@ -38,7 +38,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cityName" />
+            app:layout_constraintTop_toBottomOf="@id/cityName"
+            />
 
         <TextView
             android:id="@+id/tempMin"
@@ -50,8 +51,8 @@
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cityName"
-            android:text="@{dailyWeather.tempMinCels}"
-            tools:text="tempMin"
+            android:text="@{@string/strTempMin(dailyWeather.tempMin)}"
+            tools:text="@string/strTempMin"
             android:textColor="@color/colorText"/>
 
         <TextView
@@ -65,8 +66,8 @@
             app:layout_constraintHorizontal_bias="0.176"
             app:layout_constraintStart_toEndOf="@id/tempMin"
             app:layout_constraintTop_toBottomOf="@id/cityName"
-            android:text="@{dailyWeather.tempMaxCels}"
-            tools:text="tempMax"
+            android:text="@{@string/strTempMax(dailyWeather.tempMax)}"
+            tools:text="@string/strTempMax"
             android:textColor="@color/colorText"/>
 
         <TextView
@@ -80,8 +81,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tempMin"
-            android:text="@{dailyWeather.readableDescription}"
-            tools:text="weatherDescription"
+            android:text="@{@string/strWeatherDescription(dailyWeather.weatherDescription)}"
+            tools:text="@string/strWeatherDescription"
             android:textColor="@color/colorText"/>
 
         <TextView
@@ -95,8 +96,8 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/weatherDescription"
-            android:text="@{dailyWeather.readableTime}"
-            tools:text="weatherTime"
+            android:text="@{@string/strWeatherTime(dailyWeather.time)}"
+            tools:text="@string/strWeatherTime"
             android:textColor="@color/colorText"/>
 
 

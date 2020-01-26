@@ -23,19 +23,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@{@string/strDateTime(forecastItem.dt_txt)}"
+                tools:text="@string/strDateTime"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/colorText"/>
+
             <ImageView
                 android:id="@+id/weatherIcon"
                 android:layout_width="96dp"
                 android:layout_height="96dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="8dp"
                 android:contentDescription="@string/weather_icon"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:cropToPadding="false"
                 android:scaleType="fitCenter"
                 app:layout_constraintHorizontal_bias="0.051"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:url="@{forecastItem.icon}"/>
+                app:layout_constraintTop_toBottomOf="@id/txtDateTime"
+                app:url="@{forecastItem.icon}"
+                app:errorImage="@{@drawable/ic_error}"/>
 
             <TextView
                 android:id="@+id/pressure"
@@ -47,7 +60,7 @@
                 tools:text="@string/strPressure"
                 android:textSize="18sp"
                 app:layout_constraintStart_toEndOf="@id/weatherIcon"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txtDateTime"
                 android:textColor="@color/colorText"/>
 
             <TextView

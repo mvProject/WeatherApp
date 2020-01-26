@@ -32,14 +32,35 @@ class MainActivity : AppCompatActivity() {
 
         val perms= intArrayOf(1,2)
         val geoLocator = GeoLocator(applicationContext, this@MainActivity)
+        val bundle = Bundle()
 
-       if (PermissionCheck.checkForPermissions(this,perms)) {
-           Log.d("Weather", "Permission Granted")
-           Log.d("Weather", "lattitude - " + geoLocator.lattitude.toString())
-           Log.d("Weather", "longitude - " + geoLocator.longitude.toString())
-           Log.d("Weather", "longitude - " + geoLocator.city)
-       }
+        if (PermissionCheck.checkForPermissions(this,perms)) {
+            bundle.putString("lat",geoLocator.lattitude.toString())
+            bundle.putString("lon",geoLocator.longitude.toString())
+            navController.navigate(R.id.navigation_daily,bundle)
+        }
         else
-           Log.d("Weather","Permission Denied")
+            Log.d("Weather","Permission Denied")
+
+
+
+
+        navView.setOnNavigationItemSelectedListener { item ->
+                when(item.itemId){
+                    R.id.navigation_daily -> {
+                        Log.d("Weather", "daily clicked")
+                        navController.navigate(R.id.navigation_daily,bundle)
+                        true
+                    }
+
+                    R.id.navigation_weekly -> {
+                        Log.d("Weather", "weekly clicked")
+                        navController.navigate(R.id.navigation_weekly,bundle)
+                        true
+                    }
+                    else -> true
+                }
+            }
+
     }
 }

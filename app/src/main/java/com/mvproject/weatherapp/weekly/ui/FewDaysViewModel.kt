@@ -1,6 +1,5 @@
 package com.mvproject.weatherapp.weekly.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mvproject.weatherapp.network.WeatherDataLoad
@@ -12,13 +11,10 @@ class FewDaysViewModel : ViewModel() {
     private var myJob: Job? = null
     var forecast = MutableLiveData<MutableList<Forecast>>()
 
-    fun getWeeklyData(){
-        Log.d("Weather","start weekly")
-
-        // Todo get coords from GPS
+    fun getWeeklyData(lat : String,lon : String){
 
         myJob = CoroutineScope(Dispatchers.IO).launch {
-            val weather = WeatherDataLoad().getWeeklyWeatherData("48.5132","32.2597")
+            val weather = WeatherDataLoad().getWeeklyWeatherData(lat,lon)
             withContext(Dispatchers.Main) {
                 val list = mutableListOf<Forecast>()
                 for (item in weather.list)
@@ -34,8 +30,6 @@ class FewDaysViewModel : ViewModel() {
                         )
                     )
                 forecast.value = list
-                Log.d("Weather","end weekly")
-                Log.d("Weather","viewmodel weatherWeekly name - " + forecast.value)
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.mvproject.weatherapp.weekly.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.mvproject.weatherapp.R
-import com.mvproject.weatherapp.weekly.ForecastAdapter
+import com.mvproject.weatherapp.weekly.recyclerview.ForecastAdapter
 import com.mvproject.weatherapp.weekly.data.Forecast
 import kotlinx.android.synthetic.main.few_days_fragment.*
 
@@ -35,9 +36,8 @@ class FewDaysFragment : Fragment() {
                 adapter = ForecastAdapter(it)
             }}
         })
-
-
-        viewModel.getWeeklyData()
+        viewModel.getWeeklyData(arguments?.getString("lat")?: "48.5132",
+                                arguments?.getString("lon")?: "32.2597")
     }
 
 }

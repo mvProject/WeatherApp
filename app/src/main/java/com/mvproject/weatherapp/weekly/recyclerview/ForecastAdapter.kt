@@ -1,4 +1,4 @@
-package com.mvproject.weatherapp.weekly
+package com.mvproject.weatherapp.weekly.recyclerview
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +7,9 @@ import com.mvproject.weatherapp.weekly.data.Forecast
 class ForecastAdapter(var forecast: MutableList<Forecast>) : RecyclerView.Adapter<ForecastViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastViewHolder {
 
-        return ForecastViewHolder(parent)
+        return ForecastViewHolder(
+            parent
+        )
     }
 
     override fun getItemCount(): Int {

@@ -13,7 +13,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.mvproject.weatherapp.R
 import com.mvproject.weatherapp.daily.data.CurrentWeather
+import com.mvproject.weatherapp.daily.data.DailyWeather
 import com.mvproject.weatherapp.databinding.DailyFragmentBinding
+import com.mvproject.weatherapp.utils.getImageFullUrl
+import com.mvproject.weatherapp.utils.getTempCelsius
+import com.mvproject.weatherapp.utils.getTime
 
 class DailyFragment : Fragment() {
 
@@ -35,11 +39,19 @@ class DailyFragment : Fragment() {
         dailyBinding.lifecycleOwner = this
 
         viewModel.singleWeather.observe(viewLifecycleOwner,Observer<CurrentWeather>{
-            dailyBinding.dailyWeather = it
-            Log.d("Weather",it.getWeatherIcon())
+            val weather = DailyWeather(it.dt.getTime(),
+                                       it.name,
+                                       it.main.temp_min.getTempCelsius(),
+                                       it.main.temp_min.getTempCelsius(),
+                                       it.weather.first().description,
+                                       it.weather.first().icon.getImageFullUrl()
+                )
+            dailyBinding.dailyWeather = weather
+            Log.d("Weather",weather.weatherIcon)
         })
 
-        viewModel.getData()
+        viewModel.getData(arguments?.getString("lat")?: "48.5132",
+                          arguments?.getString("lon")?: "32.2597")
     }
 
 }

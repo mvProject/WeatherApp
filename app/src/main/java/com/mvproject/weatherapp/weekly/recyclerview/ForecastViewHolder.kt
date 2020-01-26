@@ -1,4 +1,4 @@
-package com.mvproject.weatherapp.weekly
+package com.mvproject.weatherapp.weekly.recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
