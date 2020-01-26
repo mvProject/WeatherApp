@@ -26,14 +26,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@{dailyWeather.name}"
-            tools:text="cityName"/>
+            tools:text="cityName"
+            android:textColor="@color/colorText"/>
 
         <ImageView
             android:id="@+id/weatherIcon"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
-            android:contentDescription="weather icon"
+            android:contentDescription="@string/weather_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +51,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cityName"
             android:text="@{dailyWeather.tempMinCels}"
-            tools:text="tempMin" />
+            tools:text="tempMin"
+            android:textColor="@color/colorText"/>
 
         <TextView
             android:id="@+id/tempMax"
@@ -64,7 +66,8 @@
             app:layout_constraintStart_toEndOf="@id/tempMin"
             app:layout_constraintTop_toBottomOf="@id/cityName"
             android:text="@{dailyWeather.tempMaxCels}"
-            tools:text="tempMax" />
+            tools:text="tempMax"
+            android:textColor="@color/colorText"/>
 
         <TextView
             android:id="@+id/weatherDescription"
@@ -78,7 +81,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tempMin"
             android:text="@{dailyWeather.readableDescription}"
-            tools:text="weatherDescription" />
+            tools:text="weatherDescription"
+            android:textColor="@color/colorText"/>
 
         <TextView
             android:id="@+id/weatherData"
@@ -92,7 +96,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/weatherDescription"
             android:text="@{dailyWeather.readableTime}"
-            tools:text="weatherTime" />
+            tools:text="weatherTime"
+            android:textColor="@color/colorText"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,74 +10,85 @@
             type="com.mvproject.weatherapp.weekly.data.Forecast" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:orientation="vertical"
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp">
 
-        <ImageView
-            android:id="@+id/weatherIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="12dp"
-            android:contentDescription="weather icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.051"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:url="@{forecastItem.icon}"/>
-
-        <TextView
-            android:id="@+id/pressure"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="4dp"
-            android:text="@{forecastItem.pressure}"
-            tools:text="pressure"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/weatherIcon"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/humidity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="4dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/weatherIcon"
-            app:layout_constraintTop_toBottomOf="@id/pressure"
-            android:text="@{forecastItem.humidity}"
-            tools:text="humidity"/>
+            <ImageView
+                android:id="@+id/weatherIcon"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginTop="12dp"
+                android:contentDescription="@string/weather_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:cropToPadding="false"
+                android:scaleType="fitCenter"
+                app:layout_constraintHorizontal_bias="0.051"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:url="@{forecastItem.icon}"/>
 
-        <TextView
-            android:id="@+id/temperature"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="4dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/weatherIcon"
-            app:layout_constraintTop_toBottomOf="@id/humidity"
-            android:text="@{forecastItem.temp}"
-            tools:text="temperature"/>
+            <TextView
+                android:id="@+id/pressure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="4dp"
+                android:text="@{@string/strPressure(forecastItem.pressure)}"
+                tools:text="@string/strPressure"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/weatherIcon"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textColor="@color/colorText"/>
 
-        <TextView
-            android:id="@+id/wind"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="130dp"
-            android:layout_marginTop="4dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@id/weatherIcon"
-            app:layout_constraintTop_toBottomOf="@id/temperature"
-            android:text="@{forecastItem.speed}"
-            tools:text="wind"/>
+            <TextView
+                android:id="@+id/humidity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/weatherIcon"
+                app:layout_constraintTop_toBottomOf="@id/pressure"
+                android:text="@{@string/strHumidity(forecastItem.humidity)}"
+                tools:text="@string/strHumidity"
+                android:textColor="@color/colorText"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/temperature"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/weatherIcon"
+                app:layout_constraintTop_toBottomOf="@id/humidity"
+                android:text="@{@string/strTemperature(forecastItem.temp)}"
+                tools:text="@string/strTemperature"
+                android:textColor="@color/colorText"/>
+
+            <TextView
+                android:id="@+id/wind"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="4dp"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@id/weatherIcon"
+                app:layout_constraintTop_toBottomOf="@id/temperature"
+                android:text="@{@string/strWindSpeed(forecastItem.speed)}"
+                tools:text="@string/strWindSpeed"
+                android:textColor="@color/colorText"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

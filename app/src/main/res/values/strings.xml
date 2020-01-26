@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">WeatherApp</string>
+    <string name="strPressure">Давление %s</string>
+    <string name="strHumidity">Влажность %s</string>
+    <string name="strTemperature">Температура %s</string>
+    <string name="strWindSpeed">Ветер.скорость %s</string>
+    <string name="strCity">Город %s</string>
+    <string name="strTempMin">Темп.мин %s</string>
+    <string name="strTempMax">Темп.макс %s</string>
+    <string name="strWeatherDescription">Дополнительно %s</string>
+    <string name="strWeatherTime">Время %s</string>
+    <string name="weather_icon">weather icon</string>
+    <string name="strDaily">Сегодня</string>
+    <string name="strWeekly">Неделя</string>
 </resources>
