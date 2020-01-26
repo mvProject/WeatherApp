@@ -12,6 +12,8 @@ class DailyViewModel : ViewModel() {
     fun getData(){
         Log.d("Weather","start daily")
 
+        // Todo get coords from GPS
+
         myJob = CoroutineScope(Dispatchers.IO).launch {
             //val weather = WeatherDataLoad().getWeatherData(lat,lon)
             val singleWeather = WeatherDataLoad()

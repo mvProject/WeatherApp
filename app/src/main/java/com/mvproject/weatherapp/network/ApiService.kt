@@ -31,3 +31,5 @@ class ApiService {
         const val BASE_URL = "http://api.openweathermap.org/data/2.5/"
     }
 }
+
+// TODO Cashing and NoInternet Check

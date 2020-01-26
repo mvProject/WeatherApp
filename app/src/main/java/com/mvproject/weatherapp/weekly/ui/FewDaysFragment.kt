@@ -23,7 +23,6 @@ class FewDaysFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(FewDaysViewModel::class.java)
-        // TODO: Use the ViewModel
 
         viewModel.getWeeklyData()
     }
