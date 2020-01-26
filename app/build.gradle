@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.github.AravindVijay7:GeoLocator-Android:1.0.2'
 
     implementation 'com.louiscad.splitties:splitties-systemservices:3.0.0-alpha06'
+    implementation 'com.louiscad.splitties:splitties-appctx:3.0.0-alpha06'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.0'
