@@ -5,10 +5,15 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 @SuppressLint("SimpleDateFormat")
-fun  Long.getDate(): String {
+fun  Int.getDate(): String {
     return SimpleDateFormat("dd.MM.yyyy").format(Date(this*1000L))
 }
 @SuppressLint("SimpleDateFormat")
-fun  Long.getTime(): String {
+fun  Int.getTime(): String {
     return SimpleDateFormat("HH:mm").format(Date(this*1000L))
 }
+
+fun Double.getTempCelsius() : String{
+    return this.toString()
+}
+
