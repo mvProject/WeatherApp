@@ -35,11 +35,9 @@ class MainActivity : AppCompatActivity() {
         val perms= intArrayOf(1,2)
         val geoLocator = GeoLocator(applicationContext, this@MainActivity)
 
-
         if (PermissionCheck.checkForPermissions(this,perms)) {
             bundle.putString("lat",geoLocator.lattitude.toString())
             bundle.putString("lon",geoLocator.longitude.toString())
-            navController.navigate(R.id.navigation_daily,bundle)
         }
         else
             Log.d("Weather","Permission Denied")

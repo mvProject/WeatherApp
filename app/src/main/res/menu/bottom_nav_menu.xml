@@ -4,11 +4,11 @@
     <item
         android:id="@+id/navigation_daily"
         android:icon="@drawable/ic_today"
-        android:title="first" />
+        android:title="Daily" />
 
     <item
         android:id="@+id/navigation_weekly"
         android:icon="@drawable/ic_week"
-        android:title="second" />
+        android:title="Weekly" />
 
 </menu>

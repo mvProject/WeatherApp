@@ -47,7 +47,6 @@ class DailyFragment : Fragment() {
                                        it.weather.first().icon.getImageFullUrl()
                 )
             dailyBinding.dailyWeather = weather
-            Log.d("Weather",weather.weatherIcon)
         })
 
         viewModel.getData(arguments?.getString("lat")?: "48.5132",

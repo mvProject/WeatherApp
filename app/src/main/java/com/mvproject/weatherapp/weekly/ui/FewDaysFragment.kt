@@ -1,7 +1,6 @@
 package com.mvproject.weatherapp.weekly.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +27,7 @@ class FewDaysFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(FewDaysViewModel::class.java)
 
         viewModel.forecast.observe(viewLifecycleOwner, Observer<MutableList<Forecast>> {
@@ -36,8 +36,9 @@ class FewDaysFragment : Fragment() {
                 adapter = ForecastAdapter(it)
             }}
         })
+
         viewModel.getWeeklyData(arguments?.getString("lat")?: "48.5132",
-                                arguments?.getString("lon")?: "32.2597")
+                               arguments?.getString("lon")?: "32.2597")
     }
 
 }
