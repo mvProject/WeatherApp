@@ -40,6 +40,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cityName"
             android:contentDescription="@string/weather_icon"
+            app:url="@{dailyWeather.weatherIcon}"
+            app:placeholder="@{@drawable/ic_error}"
             />
 
         <TextView
