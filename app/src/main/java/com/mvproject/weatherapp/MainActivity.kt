@@ -1,7 +1,10 @@
 package com.mvproject.weatherapp
 
+import android.content.Context
+import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -10,6 +13,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.location.aravind.getlocation.GeoLocator
 import com.mvproject.weatherapp.utils.permissions.PermissionCheck
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,14 +37,21 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         val perms= intArrayOf(1,2)
-        val geoLocator = GeoLocator(applicationContext, this@MainActivity)
 
-        if (PermissionCheck.checkForPermissions(this,perms)) {
-            bundle.putString("lat",geoLocator.lattitude.toString())
-            bundle.putString("lon",geoLocator.longitude.toString())
-        }
-        else
-            Log.d("Weather","Permission Denied")
+        val locManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        if (!locManager.isProviderEnabled( LocationManager.GPS_PROVIDER ))
+            Toast.makeText(this,"GPS Off",Toast.LENGTH_SHORT).show()
+            else
+            {
+                val geoLocator = GeoLocator(applicationContext, this@MainActivity)
+
+                if (PermissionCheck.checkForPermissions(this, perms)) {
+                    bundle.putString("lat", geoLocator.lattitude.toString())
+                    bundle.putString("lon", geoLocator.longitude.toString())
+                } else
+                    Log.d("Weather", "Permission Denied")
+            }
 
         navView.setOnNavigationItemSelectedListener { item ->
                 when(item.itemId){
