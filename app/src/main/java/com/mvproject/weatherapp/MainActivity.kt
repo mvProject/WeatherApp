@@ -17,9 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
+        val bundle = Bundle()
+
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         val perms= intArrayOf(1,2)
         val geoLocator = GeoLocator(applicationContext, this@MainActivity)
-        val bundle = Bundle()
+
 
         if (PermissionCheck.checkForPermissions(this,perms)) {
             bundle.putString("lat",geoLocator.lattitude.toString())
@@ -41,9 +43,6 @@ class MainActivity : AppCompatActivity() {
         }
         else
             Log.d("Weather","Permission Denied")
-
-
-
 
         navView.setOnNavigationItemSelectedListener { item ->
                 when(item.itemId){
@@ -60,7 +59,6 @@ class MainActivity : AppCompatActivity() {
                     }
                     else -> true
                 }
-            }
-
+        }
     }
 }
