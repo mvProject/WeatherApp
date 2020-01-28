@@ -4,11 +4,11 @@
     <item
         android:id="@+id/navigation_daily"
         android:icon="@drawable/ic_today"
-        android:title="Daily" />
+        android:title="@string/strMenuItemDaily" />
 
     <item
         android:id="@+id/navigation_weekly"
         android:icon="@drawable/ic_week"
-        android:title="Weekly" />
+        android:title="@string/strMenuItemWeekly" />
 
 </menu>

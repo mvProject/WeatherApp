@@ -21,12 +21,16 @@ fun getCachingInterceptor() : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
             request = if (hasNetwork(appCtx)!!) {
+                Log.d("Weather","data from internet")
                 request.newBuilder().header("Cache-Control", "public, max-age=" + 5).build()
-            } else
+
+            } else {
+                Log.d("Weather", "data from cache")
                 request.newBuilder().header(
                     "Cache-Control",
                     "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
                 ).build()
+            }
             return chain.proceed(request)
         }
     }

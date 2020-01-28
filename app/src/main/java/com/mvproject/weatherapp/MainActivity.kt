@@ -40,9 +40,9 @@ class MainActivity : AppCompatActivity() {
 
         val locManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if (!locManager.isProviderEnabled( LocationManager.GPS_PROVIDER ))
+        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || !locManager.isProviderEnabled(LocationManager.GPS_PROVIDER) )
             Toast.makeText(this,"GPS Off",Toast.LENGTH_SHORT).show()
-            else
+        else
             {
                 val geoLocator = GeoLocator(applicationContext, this@MainActivity)
 
