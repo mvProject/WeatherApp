@@ -45,9 +45,6 @@ class DailyFragment : Fragment() {
         })
 
         dailyViewModel.getData(arguments?.getString("lat"),arguments?.getString("lon"))
-
-        Log.d("Weather", "lat from args - " + arguments?.getString("lat"))
-        Log.d("Weather", "lon from args - " + arguments?.getString("lon"))
     }
 
 }

@@ -38,5 +38,4 @@ class WeeklyFragment : Fragment() {
 
         weeklyViewModel.getWeeklyData(arguments?.getString("lat"),arguments?.getString("lon"))
     }
-
 }

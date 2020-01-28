@@ -44,7 +44,8 @@ class MainActivity : AppCompatActivity() {
             override fun onLocationChanged(location: Location) {
                bundle.putString("lat", location.latitude.toString())
                bundle.putString("lon", location.longitude.toString())
-            }
+               navController.navigate(R.id.navigation_daily,bundle)
+             }
             override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
             override fun onProviderEnabled(provider: String) {}
             override fun onProviderDisabled(provider: String) {}
