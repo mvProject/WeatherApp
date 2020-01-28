@@ -14,8 +14,8 @@
 
     <fragment
         android:id="@+id/navigation_weekly"
-        android:name="com.mvproject.weatherapp.weekly.ui.FewDaysFragment"
+        android:name="com.mvproject.weatherapp.weekly.ui.WeeklyFragment"
         android:label="@string/strWeekly"
-        tools:layout="@layout/few_days_fragment" />
+        tools:layout="@layout/weekly_fragment" />
 
 </navigation>

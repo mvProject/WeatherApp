@@ -1,31 +1,30 @@
 package com.mvproject.weatherapp
 
-import android.content.Context
+import android.location.Location
+import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.location.aravind.getlocation.GeoLocator
 import com.mvproject.weatherapp.utils.permissions.PermissionCheck
 
-
 class MainActivity : AppCompatActivity() {
+
+    private var locationManager : LocationManager? = null
+    private val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+    }
 
-
-        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
-        val bundle = Bundle()
-
+    override fun onStart() {
+        super.onStart()
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -33,41 +32,53 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_weekly
             )
         )
+
+        val navView: BottomNavigationView = findViewById(R.id.nav_view)
+        val navController = findNavController(R.id.nav_host_fragment)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val perms= intArrayOf(1,2)
+        locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
 
-        val locManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-        if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || !locManager.isProviderEnabled(LocationManager.GPS_PROVIDER) )
-            Toast.makeText(this,"GPS Off",Toast.LENGTH_SHORT).show()
-        else
-            {
-                val geoLocator = GeoLocator(applicationContext, this@MainActivity)
-
-                if (PermissionCheck.checkForPermissions(this, perms)) {
-                    bundle.putString("lat", geoLocator.lattitude.toString())
-                    bundle.putString("lon", geoLocator.longitude.toString())
-                } else
-                    Log.d("Weather", "Permission Denied")
+        val locationListener: LocationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location) {
+               bundle.putString("lat", location.latitude.toString())
+               bundle.putString("lon", location.longitude.toString())
             }
+            override fun onStatusChanged(provider: String, status: Int, extras: Bundle) {}
+            override fun onProviderEnabled(provider: String) {}
+            override fun onProviderDisabled(provider: String) {}
+        }
+
+        val permissionsNeeded= intArrayOf(1,2)
+        try {
+            if (PermissionCheck.checkForPermissions(this, permissionsNeeded)) {
+                locationManager?.requestSingleUpdate(
+                    LocationManager.GPS_PROVIDER,
+                    locationListener,
+                    null
+                )
+            }
+        } catch(ex: SecurityException) {
+                Log.d("Weather", "Security Exception, no location available")
+
+        }
 
         navView.setOnNavigationItemSelectedListener { item ->
-                when(item.itemId){
-                    R.id.navigation_daily -> {
-                        Log.d("Weather", "daily clicked")
-                        navController.navigate(R.id.navigation_daily,bundle)
-                        true
-                    }
-
-                    R.id.navigation_weekly -> {
-                        Log.d("Weather", "weekly clicked")
-                        navController.navigate(R.id.navigation_weekly,bundle)
-                        true
-                    }
-                    else -> true
+            when(item.itemId){
+                R.id.navigation_daily -> {
+                    Log.d("Weather", "daily clicked")
+                    navController.navigate(R.id.navigation_daily,bundle)
+                    true
                 }
+
+                R.id.navigation_weekly -> {
+                    Log.d("Weather", "weekly clicked")
+                    navController.navigate(R.id.navigation_weekly,bundle)
+                    true
+                }
+                else -> true
+            }
         }
     }
 }

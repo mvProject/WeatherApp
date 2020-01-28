@@ -11,34 +11,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mvproject.weatherapp.R
 import com.mvproject.weatherapp.weekly.recyclerview.ForecastAdapter
 import com.mvproject.weatherapp.weekly.data.Forecast
-import kotlinx.android.synthetic.main.few_days_fragment.*
+import kotlinx.android.synthetic.main.weekly_fragment.*
 
+class WeeklyFragment : Fragment() {
 
-class FewDaysFragment : Fragment() {
-
-    private lateinit var viewModel: FewDaysViewModel
+    private lateinit var weeklyViewModel: WeeklyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.few_days_fragment, container, false)
+        return inflater.inflate(R.layout.weekly_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(FewDaysViewModel::class.java)
+        weeklyViewModel = ViewModelProvider(this).get(WeeklyViewModel::class.java)
 
-        viewModel.forecast.observe(viewLifecycleOwner, Observer<MutableList<Forecast>> {
+        weeklyViewModel.forecast.observe(viewLifecycleOwner, Observer<MutableList<Forecast>> {
             it.let{forecastList.apply {
                 layoutManager = LinearLayoutManager(context)
                 adapter = ForecastAdapter(it)
             }}
         })
 
-        viewModel.getWeeklyData(arguments?.getString("lat")?: "48.5132",
-                               arguments?.getString("lon")?: "32.2597")
+        weeklyViewModel.getWeeklyData(arguments?.getString("lat"),arguments?.getString("lon"))
     }
 
 }
