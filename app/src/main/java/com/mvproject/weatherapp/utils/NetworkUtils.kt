@@ -39,8 +39,6 @@ fun getCachingInterceptor(): Interceptor {
 }
 
 fun getCache(): Cache {
-    // todo: magic numbers
-    //val cacheSize = (5 * 1024 * 1024).toLong()
     return Cache(appCtx.cacheDir, 5242880)
 }
 

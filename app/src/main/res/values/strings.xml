@@ -22,4 +22,5 @@
     <string name="empty_coordinates">coordinates are empty</string>
     <string name="daily_menu_click">daily clicked</string>
     <string name="weekly_menu_click">weekly clicked</string>
+    <string name="date_format_pattern">HH:mm</string>
 </resources>

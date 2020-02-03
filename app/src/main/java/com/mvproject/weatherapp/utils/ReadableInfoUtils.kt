@@ -1,15 +1,12 @@
 package com.mvproject.weatherapp.utils
 
-import android.annotation.SuppressLint
+import com.mvproject.weatherapp.R
+import splitties.init.appCtx
 import java.text.SimpleDateFormat
 import java.util.*
 
-@SuppressLint("SimpleDateFormat")
-// todo: supressing insted of SimpleDateFormat("HH:mm", Locale.getDefault())
 fun  Int.getTime(): String {
-    // todo: hardcode
-    return SimpleDateFormat("HH:mm").format(Date(this*1000L)) // todo: this*1000L - wtf? :)
-
+    return SimpleDateFormat(appCtx.getString(R.string.date_format_pattern),Locale.getDefault()).format(this)
 }
 
 fun Double.getTempCelsius() : String{
