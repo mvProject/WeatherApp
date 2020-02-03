@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
+        // todo: why you find views and set up naviagtion every start instead of create
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_daily,
@@ -42,6 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         val locationListener: LocationListener = object : LocationListener {
             override fun onLocationChanged(location: Location) {
+                // todo: harcoded args names
+                // todo: use put double instead of String
                bundle.putString("lat", location.latitude.toString())
                bundle.putString("lon", location.longitude.toString())
                navController.navigate(R.id.navigation_daily,bundle)
@@ -51,7 +54,9 @@ class MainActivity : AppCompatActivity() {
             override fun onProviderDisabled(provider: String) {}
         }
 
+        // todo: not obvious what exat permissions you will ask, for person unfamiliar with all your code - reading this - is difficult
         val permissionsNeeded= intArrayOf(1,2)
+        // todo: try block is redundant
         try {
             if (PermissionCheck.checkForPermissions(this, permissionsNeeded)) {
                 locationManager?.requestSingleUpdate(
@@ -62,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             }
         } catch(ex: SecurityException) {
                 Log.d("Weather", "Security Exception, no location available")
-
+            // todo: better to do
+            // ex.printStackTrace()
         }
 
         navView.setOnNavigationItemSelectedListener { item ->

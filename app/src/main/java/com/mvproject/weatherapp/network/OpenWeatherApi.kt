@@ -6,6 +6,7 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+// todo: what will happen if you will expand app up to 20 screens with different api call and then suddenly need to switch api account (api key)
 interface OpenWeatherApi {
     @GET("forecast/")
     fun fewForecastAsync(

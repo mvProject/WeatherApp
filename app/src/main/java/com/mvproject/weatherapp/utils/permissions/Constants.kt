@@ -1,6 +1,8 @@
 package com.mvproject.weatherapp.utils.permissions
 
 import android.Manifest.permission.*
+
+// todo: redundant constants declaration
 object Constants {
     var PERMISSIONS = arrayOf(
         ACCESS_FINE_LOCATION,
