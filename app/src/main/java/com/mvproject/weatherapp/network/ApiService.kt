@@ -17,8 +17,7 @@ class ApiService {
             .cache(getCache())
             .addInterceptor(getCachingInterceptor())
             .addInterceptor(getLoggingInterceptor())
-                // todo: why timeout changed
-            .readTimeout(15, TimeUnit.SECONDS)
+
             .build()
         return Retrofit.Builder().apply {
             baseUrl(BASE_URL)

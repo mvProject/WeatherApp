@@ -15,4 +15,11 @@
     <string name="strDateTime">обн. %s</string>
     <string name="strMenuItemDaily">Сегодня</string>
     <string name="strMenuItemWeekly">Неделя</string>
+
+    <string name="log_tag">Weather</string>
+    <string name="data_from_inet">data from internet</string>
+    <string name="data_from_cache">data from cache</string>
+    <string name="empty_coordinates">coordinates are empty</string>
+    <string name="daily_menu_click">daily clicked</string>
+    <string name="weekly_menu_click">weekly clicked</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.mvproject.weatherapp.utils.permissions.PermissionCheck
+import splitties.init.appCtx
 
 class MainActivity : AppCompatActivity() {
 
@@ -66,21 +67,20 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         } catch(ex: SecurityException) {
-                Log.d("Weather", "Security Exception, no location available")
-            // todo: better to do
-            // ex.printStackTrace()
+             ex.printStackTrace()
         }
 
         navView.setOnNavigationItemSelectedListener { item ->
             when(item.itemId){
                 R.id.navigation_daily -> {
-                    Log.d("Weather", "daily clicked")
+                    Log.d(
+                        getString(R.string.log_tag), getString(R.string.daily_menu_click))
                     navController.navigate(R.id.navigation_daily,bundle)
                     true
                 }
 
                 R.id.navigation_weekly -> {
-                    Log.d("Weather", "weekly clicked")
+                    Log.d(getString(R.string.log_tag), getString(R.string.weekly_menu_click))
                     navController.navigate(R.id.navigation_weekly,bundle)
                     true
                 }

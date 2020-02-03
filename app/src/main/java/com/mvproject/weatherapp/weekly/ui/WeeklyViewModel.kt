@@ -3,10 +3,12 @@ package com.mvproject.weatherapp.weekly.ui
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mvproject.weatherapp.R
 import com.mvproject.weatherapp.network.WeatherDataLoad
 import com.mvproject.weatherapp.utils.getImageFullUrl
 import com.mvproject.weatherapp.weekly.data.Forecast
 import kotlinx.coroutines.*
+import splitties.init.appCtx
 
 class WeeklyViewModel : ViewModel() {
     private var myJob: Job? = null
@@ -14,7 +16,7 @@ class WeeklyViewModel : ViewModel() {
 
     fun getWeeklyData(lat : String?,lon : String?){
         if (lat == null && lon ==null) {
-            Log.d("Weather", "coords empty")
+            Log.d(appCtx.getString(R.string.log_tag), appCtx.getString(R.string.empty_coordinates))
         }
         else{
             myJob = CoroutineScope(Dispatchers.IO).launch {
