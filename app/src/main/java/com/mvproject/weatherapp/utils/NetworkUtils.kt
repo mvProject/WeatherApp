@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.util.Log
+import com.mvproject.weatherapp.BuildConfig
 import com.mvproject.weatherapp.R
 import okhttp3.Cache
 import okhttp3.Interceptor
@@ -34,6 +35,17 @@ fun getCachingInterceptor(): Interceptor {
                 ).build()
             }
             return chain.proceed(request)
+        }
+    }
+}
+
+fun getApiInterceptor(): Interceptor {
+    return object : Interceptor {
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val url = chain.request().url.newBuilder().
+                addQueryParameter("APPID", BuildConfig.OPEN_WEATHER_API_KEY).
+                addQueryParameter("units", "metric").build()
+            return chain.proceed(chain.request().newBuilder().url(url).build())
         }
     }
 }

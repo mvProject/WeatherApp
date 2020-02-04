@@ -1,6 +1,7 @@
 package com.mvproject.weatherapp.network
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.mvproject.weatherapp.utils.getApiInterceptor
 import com.mvproject.weatherapp.utils.getCache
 import com.mvproject.weatherapp.utils.getCachingInterceptor
 import com.mvproject.weatherapp.utils.getLoggingInterceptor
@@ -17,7 +18,7 @@ class ApiService {
             .cache(getCache())
             .addInterceptor(getCachingInterceptor())
             .addInterceptor(getLoggingInterceptor())
-
+            .addInterceptor(getApiInterceptor())
             .build()
         return Retrofit.Builder().apply {
             baseUrl(BASE_URL)
